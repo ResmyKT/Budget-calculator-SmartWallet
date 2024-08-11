@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget</title>
+    <!--Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!--font awsome cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <!--Bootstrap-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"></script>
+</head>
+<body>
+    <body style="background-image: url('https://media.licdn.com/dms/image/D4D12AQElCf0_J4ortg/article-cover_image-shrink_720_1280/0/1695621024325?e=2147483647&v=beta&t=7DtwHeNDriO6dHo_Ol3ZMnqw5mN2DKW0irVXPAdc5to');background-repeat: no-repeat;background-size: cover;">
+        <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-dark-subtle col-12">
+         <!-- Container wrapper -->
+         <div class="container ">
+      
+       
+           <!-- Toggle button -->
+           <button
+             data-mdb-collapse-init
+             class="navbar-toggler"
+             type="button"
+             data-mdb-target="#navbarButtonsExample"
+             aria-controls="navbarButtonsExample"
+             aria-expanded="false"
+             aria-label="Toggle navigation"
+           >
+             <i class="fas fa-bars"></i>
+           </button>
+       
+           <!-- Collapsible wrapper -->
+           <h2 id="welcomeuser" style="color: #000080;" class="me-5"><i class="fa-solid fa-user fa-fade"></i> Welcome user</h2>
+           <!-- <div class="collapse navbar-collapse" id="navbarButtonsExample col-12"> -->
+            
+             <!-- Left links 
+             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              
+               <li class="nav-item">
+                 <a class="nav-link fs-4 me-5" href="">Home</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link fs-4 me-5" href="#">Features</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link fs-4 me-5" href="#">Pricing</a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link fs-4" href="#">About</a>
+               </li>
+             </ul>
+             Left links -->
+       
+             <div class="float-end">
+               <button data-mdb-ripple-init type="button" onclick="logout()" class="btn btn-outline-danger float-end px-3 me-2 text-decoration-none fs-4">
+                 Logout
+               </button>
+              
+             </div>
+           </div>
+           <!-- Collapsible wrapper -->
+         </div>
+         <!-- Container wrapper -->
+       </nav>
+       <!--<div class="bg-sm-12">
+         <img src="./images/wall.jpg" alt="" class="w-100" style="height:990px;">
+       </div>-->
+       <div class="container-fluid">
+        
+         <div class="row" >
+          
+           <h1 style="font-family:IM Fell English SC, serif;font-size: 85px;" class="text-center mt-5"><span
+                   style="color: blueviolet;">S</span><span style="color:blue">mart</span> <span
+                   style="color: blueviolet;">W</span><span style="color: blue;">allet</span></h1>
+        </div>
+         <div class="row">
+            <div class="row text-center">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">TOTAL BALANCE</h5>
+                      <p class="card-text" id="incomedisplay">0/-</p>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2"></div>
+                <div class="col-sm-3 mb-5">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">TOTAL EXPENSE</h5>
+                      <p class="card-text" id="expensedisplay">0/-</p>
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+     <div class="col-1"></div>
+     
+       <div class="col-5 me-5 border border-1 border-white rounded-5" >
+         <h1 class="text-center my-4 text-primary">ADD INCOME</h1>
+         <form class=" bg-opacity-50" id="incomeform">
+             
+             <input type="text" id="incometype" class="form-control mb-5 fs-4" placeholder="Enter income type">
+             <input  type="number" id="incomeamt" class="form-control mb-5 fs-4" placeholder="Enter amount">
+     
+             <div class="text-center">
+                 <button class="btn btn-primary fs-3 mb-5" type="button"
+                     onclick="addIncome(event)">ADD INCOME</button>
+             </div>
+             
+         </form>
+     </div>
+     <div class="col-5 border border-1 border-white rounded-5">
+         <h1 class="text-center my-4 text-primary">ADD EXPENSE</h1>
+         <form class="bg-opacity-100" id="expenseform"> 
+            
+             <input  type="text" id="expensetype" class="form-control mb-5 fs-4" placeholder="Enter expense type">
+             <input  type="number" id="expenseamt"  class="form-control mb-5 fs-4" placeholder="Enter amount">
+     
+             <div class="text-center">
+                 <button class="btn btn-primary fs-3" type="button" onclick="addExpense(event)">ADD EXPENSE</button>
+             </div>
+             
+         </form>
+     </div>
+     
+     </div>
+   <div class="text-center">
+    <button class="btn btn-warning text-white ms-5 mt-5" onclick="clearAll()">Clear All</button>
+   </div>
+     </div>
+     <div class="container mt-5">
+        <h1 class="text-center text-bg-primary">Income and Expense Details</h1>
+        <div class="row">
+            <div class="col-6"><table class="table">
+                <thead>
+                  <tr class="table-danger">
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Date&Time</th>
+                  </tr>
+                </thead>
+                <tbody id="incomedetails">
+              
+                </tbody>
+              </table></div>
+            <div class="col-6"><table class="table">
+                
+                <thead>
+                  <tr class="table-danger">
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Date&Time</th>
+                  </tr>
+                </thead>
+                <tbody id="expensedetails">
+                 
+                </tbody>
+              </table></div>
+        </div>
+     </div>
+     <div class="container">
+        <h1 class="text-center fw-bold text-bg-primary ">Expense Pie-Chart</h1>
+        <div class="text-center">
+        <button class="btn btn-secondary text-center font-semibold" onclick="displaychart()">Show Pie-Chart</button>
+      </div>
+     </div>
+     <div class="col mx-auto">
+      <canvas class="mx-auto mb-5" id="piechart"></canvas>
+     </div>
+   
+
+    
+</body>
+<script src="./script.js"></script>
+</html>
